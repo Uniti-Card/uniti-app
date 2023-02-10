@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "2XPJKK84KH.com.devprotocols.uniti",
+        "paths": [
+          "*",
+          "NOT /reset-password/*"
+        ]
+      }
+    ]
+  }
+}
