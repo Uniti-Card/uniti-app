@@ -1,14 +1,17 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import Platform from "./Platform";
 import Product from "./Product";
 import "./profile.css";
 
 const ProfileCard = ({ profile }) => {
-  console.log(profile);
+  const { results: links } = useSelector((state) => state.link);
+  const { results: products } = useSelector((state) => state.product);
+
   const connectHandler = () => {
     var urlString =
-      `${process.env.REACT_APP_API_URL}/profile/contact/` + profile.id;
+      `${process.env.REACT_APP_API_URL}/profiles/contact-card/` + profile.id;
     window.open(urlString, "_self");
   };
   return (
@@ -69,28 +72,23 @@ const ProfileCard = ({ profile }) => {
           </button>
         </div>
       </div>
-      <div>
-        {profile.platforms && profile.platforms.length >= 1 ? (
-          <div className="row ml-4 mr-4">
-            {profile.platforms.map((platform, key) => {
-              return platform.isShared ? (
-                <div className="col-4 text-center" key={key}>
-                  <Platform platform={platform} />
-                </div>
-              ) : (
-                <></>
-              );
-            })}
-          </div>
-        ) : (
-          <></>
-        )}
+      <div className="row ml-4 mr-4">
+        {links &&
+          links.map((link, key) => {
+            return link.status ? (
+              <div className="col-4 text-center" key={key}>
+                <Platform link={link} />
+              </div>
+            ) : (
+              <></>
+            );
+          })}
       </div>
       <div>
-        {profile.products && profile.products.length >= 1 ? (
+        {products && products.length >= 1 ? (
           <div className="row m-2">
             <h4>{profile.category || "Products"}</h4>
-            {profile.products.map((product, key) => {
+            {products.map((product, key) => {
               return (
                 <div className="card col-12 p-0" key={key}>
                   <Product product={product} />

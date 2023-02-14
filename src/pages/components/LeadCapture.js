@@ -6,9 +6,9 @@ import Loader from "./Loader";
 import Message from "./Message";
 import * as types from "state/ducks/lead/types";
 
-const LeadCapture = ({ details }) => {
+const LeadCapture = ({ profile }) => {
   const dispatch = useDispatch();
-  const [show, setShow] = useState(details.leadCapture);
+  const [show, setShow] = useState(profile.leadCapture);
   const [showMore, setShowMore] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -31,14 +31,14 @@ const LeadCapture = ({ details }) => {
       dispatch({ type: types.LEAD_RESET });
       setShow(false);
     }
-  }, [success, form, dispatch, details]);
+  }, [success, form, dispatch, profile]);
   const handleClose = () => {
     setShow(false);
   };
 
   const handleAddLead = (e) => {
     e.preventDefault();
-    dispatch(addLead({ ...form, user: details.id }));
+    dispatch(addLead({ ...form, user: profile.user }));
   };
   return (
     <div>
@@ -50,9 +50,7 @@ const LeadCapture = ({ details }) => {
         className="text-center"
       >
         <Modal.Header closeButton onHide={handleClose}>
-          <h5 className="m-auto">
-            Share your info with {details.personal.name}
-          </h5>
+          <h5 className="m-auto">Share your info with {profile.name}</h5>
         </Modal.Header>
         <Modal.Body>
           {error && <Message variant="danger">{error}</Message>}

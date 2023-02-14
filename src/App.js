@@ -1,7 +1,7 @@
-import ResetPassword from 'pages/ResetPassword';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import NotFound from './pages/NotFound';
-import Profile from './pages/Profile';
+import ResetPassword from "pages/ResetPassword";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -9,12 +9,12 @@ function App() {
       <Switch>
         <Route
           exact
-          path={process.env.PUBLIC_URL + '/reset-password'}
+          path={process.env.PUBLIC_URL + "/reset-password"}
           component={ResetPassword}
         />
         <Route
           exact
-          path={process.env.PUBLIC_URL + '/:username'}
+          path={process.env.PUBLIC_URL + "/:id"}
           component={Profile}
         />
         <Route component={NotFound} />

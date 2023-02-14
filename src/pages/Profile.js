@@ -1,23 +1,24 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "state/ducks/user/actions";
+import { getProfile } from "state/ducks/profile/actions";
 import ProfileDescription from "./components/ProfileDescription";
 
 const Profile = ({ match }) => {
-  const username = match.params.username;
+  const id = match.params.id;
   const dispatch = useDispatch();
-  const { details } = useSelector((state) => state.user);
+  const { details } = useSelector((state) => state.profile);
 
   useEffect(() => {
-    dispatch(getUser(username));
-  }, [username, dispatch]);
+    console.log(id);
+    dispatch(getProfile(id));
+  }, [id, dispatch]);
 
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{username} - Uniti</title>
+        <title>{id} - Uniti</title>
       </Helmet>
       <div class="container-fluid">
         <div class="row">
@@ -40,7 +41,7 @@ const Profile = ({ match }) => {
         </div>
         <div class="row justify-content-md-center">
           <div class="col col-md-4">
-            {details && <ProfileDescription details={details} key={details} />}
+            {details && <ProfileDescription profile={details} key={details} />}
           </div>
         </div>
       </div>

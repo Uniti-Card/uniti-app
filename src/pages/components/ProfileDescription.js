@@ -1,30 +1,35 @@
-import React from 'react';
-import LeadCapture from './LeadCapture';
-import ProfileCard from './ProfileCard';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getLinks } from "state/ducks/link/actions";
+import { getProducts } from "state/ducks/product/actions";
+import LeadCapture from "./LeadCapture";
+import ProfileCard from "./ProfileCard";
 
-const ProfileDescription = ({ details }) => {
-  if (details.direct !== '' && details.direct !== undefined) {
-    const platforms = details.personal.platforms.concat(
-      details.business.platforms
-    );
-    const platform = platforms.find(({ id }) => id === details.direct);
-    var urlString =
-      platform.type === 'url' && !platform.value.startsWith('http')
-        ? 'https://' + platform.value
-        : platform.webBaseURL + platform.value;
-    console.log(urlString);
-    window.open(urlString, '_self');
-  }
+const ProfileDescription = ({ profile }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (profile.directOn) {
+      const link = profile.direct;
+      var urlString =
+        link.platform.type === "url" && !link.value.startsWith("http")
+          ? "https://" + link.value
+          : link.platform.webBaseURL + link.value;
+      window.open(urlString, "_self");
+    } else {
+      dispatch(getLinks(profile.id));
+      dispatch(getProducts(profile.id));
+    }
+  }, [profile, dispatch]);
+
   return (
     <>
-      {details.direct !== '' && details.direct !== undefined ? (
+      {profile.directOn ? (
         <>Direct On</>
       ) : (
         <div className="">
-          <ProfileCard
-            profile={details.isPersonal ? details.personal : details.business}
-          />
-          <LeadCapture details={details} />
+          <ProfileCard profile={profile} />
+          <LeadCapture profile={profile} />
         </div>
       )}
     </>

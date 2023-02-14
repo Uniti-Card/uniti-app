@@ -1,5 +1,4 @@
-import React from 'react';
-import { Card } from 'react-bootstrap';
+import React from "react";
 
 const Product = ({ product }) => {
   return (
@@ -8,30 +7,30 @@ const Product = ({ product }) => {
       target="_blank"
       rel="noreferrer"
       style={{
-        textDecoration: 'none',
-        color: 'inherit',
+        textDecoration: "none",
+        color: "inherit",
         outline: 0,
-        cursor: 'auto',
+        cursor: "auto",
       }}
     >
       <div
         className="row"
         style={{
-          height: '120px',
+          height: "120px",
         }}
       >
         <div className="col-4">
           <img
             src={
-              product.image && product.image !== ''
+              product.image && product.image !== ""
                 ? `${process.env.REACT_APP_API_URL}${product.image}`
                 : `${process.env.PUBLIC_URL}/assets/cover_placeholder.png`
             }
             alt={product.image}
             className="card ml-2"
             style={{
-              width: '100px',
-              height: '100px',
+              width: "100px",
+              height: "100px",
             }}
           />
         </div>
