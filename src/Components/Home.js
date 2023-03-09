@@ -19,7 +19,6 @@ const Home = () => {
       .then((res) => {
         setData(res.data);
         console.log("Response from Profile API: ", res.data);
-        console.log("testing image from direct object", res.data.direct.image)
         // console.log("<======ID for Links API is=======> :  ", res.data.id);
         // setPlatform(res.data.direct.platform);
         // console.log('platform Data: ',res.data.id)
@@ -80,7 +79,6 @@ const Home = () => {
           <div>
           {/* {data.direct.image? console.log("profile image exist") : console.log("profile image doesn't exist")} */}
             <img className="profileImg" src="/profile.png"></img>
-            {/* <img className="profileImg" src={`https://api.uniticard.com/v1/${}`}></img> */}
           </div>
           <div>
             <p className="nameStyle">{data.name}</p>
