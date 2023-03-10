@@ -18,34 +18,36 @@ const Home = () => {
       .get(`${baseUri}profiles/public/${id}`)
       .then((res) => {
         setData(res.data);
-        console.log("Response from Profile API: ", res.data);
+        console.log("Response from Profile API: ", res.data.image);
         // console.log("<======ID for Links API is=======> :  ", res.data.id);
-        // setPlatform(res.data.direct.platform);
-        // console.log('platform Data: ',res.data.id)
         // setProfileId(res.data.id);
         getProducts(res.data.id);
+        getLinkData(res.data.id)
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err)
       });
 
-    // ------------------------>Links API<-------------------------
-    axios
-      .get(`${baseUri}links?profile=${id}`)
-      .then((res) => {
-        //  console.log("Response from Links API: ", res.data.results);
-        setLinksData(res.data.results);
-        // console.log("=========Links Data from state========",linksData)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }, []);
 
   // ----------used to extract platforms from links api------------------------
   const result = linksData.map((link) => ({ value: link.platform }));
   // console.log("Result Array",result)
   // ----------used to extract platforms from links api------------------------
+
+  const getLinkData = async (val) =>{
+
+    await axios
+      .get(`${baseUri}links?profile=${val}`)
+      .then((res) => {
+        //  console.log("Response from Links API: ", res.data.results);
+        setLinksData(res.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  }
 
   const getProducts = async (val) => {
     // ------------------------>Get Products<-------------------------
@@ -68,9 +70,10 @@ const Home = () => {
       <header className="App-header">
         <Box
           sx={{
-            width: 500,
+            width:500,
             height: "100%",
             boxShadow: "rgb(0 0 0 / 20%) 0px 2px 12px",
+           overflow:'hidden'
           }}
         >
           {/* <-------------------------top profile-----------------------> */}
@@ -78,9 +81,13 @@ const Home = () => {
           <img style={{ height: 238.11 }} src="/banners.png"></img>
           <div>
           {/* {data.direct.image? console.log("profile image exist") : console.log("profile image doesn't exist")} */}
-            <img className="profileImg" src="/profile.png"></img>
+            <img className="profileImg" src={`${baseUri}${data.image}`}></img>
           </div>
           <div>
+          {/* <p className="nameStyle">{data.name}</p>
+            <p className="ocpStyle">{data.title}</p>
+            <p className="cityStyle">{data.category}</p> */}
+
             <p className="nameStyle">{data.name}</p>
             <p className="ocpStyle">{data.title}</p>
             <p className="cityStyle">{data.category}</p>
@@ -90,7 +97,6 @@ const Home = () => {
               Save Contact
             </Button>
           </div>
-
           {/* platform component */}
 
           <Platforms result={result} />
