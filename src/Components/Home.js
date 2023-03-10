@@ -19,8 +19,6 @@ const Home = () => {
       .then((res) => {
         setData(res.data);
         console.log("Response from Profile API: ", res.data.image);
-        // console.log("<======ID for Links API is=======> :  ", res.data.id);
-        // setProfileId(res.data.id);
         getProducts(res.data.id);
         getLinkData(res.data.id)
       })
@@ -78,16 +76,12 @@ const Home = () => {
         >
           {/* <-------------------------top profile-----------------------> */}
 
-          <img style={{ height: 238.11 }} src="/banners.png"></img>
+          <img className="bannerImage" style={{ height: 238.11 }} src="/banners.png"></img>
           <div>
           {/* {data.direct.image? console.log("profile image exist") : console.log("profile image doesn't exist")} */}
             <img className="profileImg" src={`${baseUri}${data.image}`}></img>
           </div>
           <div>
-          {/* <p className="nameStyle">{data.name}</p>
-            <p className="ocpStyle">{data.title}</p>
-            <p className="cityStyle">{data.category}</p> */}
-
             <p className="nameStyle">{data.name}</p>
             <p className="ocpStyle">{data.title}</p>
             <p className="cityStyle">{data.category}</p>
