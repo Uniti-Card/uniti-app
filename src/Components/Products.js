@@ -1,6 +1,6 @@
 import { Box, Card, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material'
 import React from 'react'
-import { baseUri } from '../config'
+import { baseUri } from '../Config/config'
 
 const Products = ({products}) => {
   return (

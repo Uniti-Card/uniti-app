@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { baseUri } from "../config";
+import { baseUri } from "../Config/config";
 import Platforms from "./Platforms";
 import Products from "./Products";
 const Home = () => {
@@ -78,8 +78,10 @@ const Home = () => {
 
           <img className="bannerImage" src="/banners.png"></img>
           <div>
+            
+            {/* conditional rendring for profile image */}
 
-           {data.image?  <img className="profileImg" src={`${baseUri}${data.image}`}></img> :
+           {data.image ? <img className="profileImg" src={`${baseUri}${data.image}`}></img> :
             <img className="profileImg" src="/profile.png"/>} 
 
            
