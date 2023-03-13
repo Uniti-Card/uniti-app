@@ -2,20 +2,11 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
+  width: 100%;
   background-color: rgba(255,255,255,0.26);
-  min-height: 100vh;
+  min-height: fit-content;
+  min-width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,18 +31,18 @@
 .nameStyle{
   font-weight: 600;
   color: black;
-  margin-top: 0px;
+  margin-top: 2px;
 }
 .ocpStyle{
   opacity: 0.8;
   font-size: 17px;
   font-weight: 600;
-  margin-top: -25px;
+  
 }
 .cityStyle{
   font-size: 16px;
   opacity: 0.8;
-  margin-top: -15px;
+  
   font-weight: 400;
 }
 .saveContact{

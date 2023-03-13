@@ -16,7 +16,9 @@ const Platforms = ({result}) => {
                         src={`${baseUri}${val.value.image}`}
                       />
                     </div>
-                    <div style={{ marginTop: -15 }}>
+
+                    <div style={{ marginTop: -10 }}>
+
                       <span style={{ fontSize: 11 }}>{val.value.title}</span>
                     </div>
                   </Grid>
