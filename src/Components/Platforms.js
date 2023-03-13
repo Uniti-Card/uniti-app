@@ -5,7 +5,7 @@ import { baseUri } from '../config'
 const Platforms = ({result}) => {
   return (
     <>
-    <Container style={{ marginLeft: 50, marginTop: 15 }}>
+    <Container className='platformMainContainer'>
             <Box sx={{ flexGrow: 2 }}>
               <Grid sx={{ rowGap: 2 }} container spacing={-13}>
                 {result.map((val, index) => (

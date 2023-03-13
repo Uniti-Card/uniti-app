@@ -5,7 +5,7 @@ import { baseUri } from '../config'
 const Products = ({products}) => {
   return (
     <>
-    <h4 style={{ textAlign: "start", marginLeft: '10vh' }}>Products</h4>
+    <h4 className='productsHeading'>Products</h4>
           <Container style={{ marginLeft: '7vh'}}>
             <Box>
               <Grid

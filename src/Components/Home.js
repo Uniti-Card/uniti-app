@@ -76,7 +76,7 @@ const Home = () => {
         >
           {/* <-------------------------top profile-----------------------> */}
 
-          <img className="bannerImage" style={{ height: 238.11 }} src="/banners.png"></img>
+          <img className="bannerImage" src="/banners.png"></img>
           <div>
           {/* {data.direct.image? console.log("profile image exist") : console.log("profile image doesn't exist")} */}
             <img className="profileImg" src={`${baseUri}${data.image}`}></img>
