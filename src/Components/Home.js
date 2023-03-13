@@ -14,6 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     // ------------------------>Profile API<-------------------------
+
     axios
       .get(`${baseUri}profiles/public/${id}`)
       .then((res) => {
@@ -21,6 +22,7 @@ const Home = () => {
         console.log("Response from Profile API: ", res.data.image);
         getProducts(res.data.id);
         getLinkData(res.data.id)
+
       })
       .catch((err) => {
         console.log(err)
@@ -76,10 +78,12 @@ const Home = () => {
         >
           {/* <-------------------------top profile-----------------------> */}
 
+
           <img className="bannerImage" style={{ height: 238.11 }} src="/banners.png"></img>
           <div>
           {/* {data.direct.image? console.log("profile image exist") : console.log("profile image doesn't exist")} */}
             <img className="profileImg" src={`${baseUri}${data.image}`}></img>
+
           </div>
           <div>
             <p className="nameStyle">{data.name}</p>
@@ -91,6 +95,7 @@ const Home = () => {
               Save Contact
             </Button>
           </div>
+
           {/* platform component */}
 
           <Platforms result={result} />
