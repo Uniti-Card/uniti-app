@@ -78,8 +78,11 @@ const Home = () => {
 
           <img className="bannerImage" src="/banners.png"></img>
           <div>
-          {/* {data.direct.image? console.log("profile image exist") : console.log("profile image doesn't exist")} */}
-            <img className="profileImg" src={`${baseUri}${data.image}`}></img>
+
+           {data.image?  <img className="profileImg" src={`${baseUri}${data.image}`}></img> :
+            <img className="profileImg" src="/profile.png"/>} 
+
+           
           </div>
           <div>
             <p className="nameStyle">{data.name}</p>
